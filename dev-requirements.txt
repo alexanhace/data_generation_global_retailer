@@ -1,0 +1,19 @@
+dateparser==1.2.2
+Faker==40.1.2
+# Editable install with no version control (faker_data==1.0.0)
+-e /run/media/alexanh/ea7a7e65-c9e5-4a30-bdc1-2d28078423f5/Projects/python_projects/faker_data_project
+iniconfig==2.3.0
+numpy==2.4.1
+packaging==25.0
+pandas==2.3.3
+pluggy==1.6.0
+Pygments==2.19.2
+pytest==9.0.2
+python-dateutil==2.9.0.post0
+pytz==2025.2
+regex==2026.1.15
+setuptools==80.9.0
+six==1.17.0
+tzdata==2025.3
+tzlocal==5.3.1
+wheel==0.45.1
