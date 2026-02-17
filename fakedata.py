@@ -8,6 +8,10 @@ import pandas as pd
 from datetime import datetime
 from pathlib import Path
 
+def locale_fnct(x):
+  #split the input argument into two elements either using and underscore (_) or a dash (-) as the separator
+  return x.split("_",2) if x.find("_") != -1 else (x.split("-",2) if x.find("-") != -1 else -1)
+
 #******Define Argument Parser******
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description="method to generate fake PII data")
@@ -22,7 +26,7 @@ locale = args.locale  #'en-US' en-GB
 rec_num = args.record_number
 
 #split the input argument into two elements either using and underscore (_) or a dash (-) as the separator
-locale_fnct = lambda x: x.split("_",2) if x.find("_") != -1 else (x.split("-",2) if x.find("-") != -1 else -1)
+#locale_fnct = lambda x: x.split("_",2) if x.find("_") != -1 else (x.split("-",2) if x.find("-") != -1 else -1)
 
 locale_array = locale_fnct(locale)
 
