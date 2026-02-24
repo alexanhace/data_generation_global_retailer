@@ -1,0 +1,9 @@
+.venv/
+.uv/
+.pytest_cache/
+archive/
+**/__pycache__/
+*.pyc
+.vscode/
+data/
+output/

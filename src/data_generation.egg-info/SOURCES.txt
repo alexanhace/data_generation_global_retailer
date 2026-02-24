@@ -1,5 +1,4 @@
 README.md
-dev-requirements.txt
 pyproject.toml
 src/data_generation/__init__.py
 src/data_generation/__main__.py

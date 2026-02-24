@@ -2,39 +2,10 @@ Metadata-Version: 2.4
 Name: data_generation
 Version: 1.0.0
 Author-email: Your Name <your@email.com>
-Requires-Python: >=3.11
-Requires-Dist: dateparser==1.2.2
-Requires-Dist: faker==40.1.2
-Requires-Dist: iniconfig==2.3.0
-Requires-Dist: numpy==2.4.1
-Requires-Dist: packaging==25.0
-Requires-Dist: pandas==2.3.3
-Requires-Dist: pluggy==1.6.0
-Requires-Dist: pygments==2.19.2
-Requires-Dist: pytest==9.0.2
-Requires-Dist: python-dateutil==2.9.0.post0
-Requires-Dist: pytz==2025.2
-Requires-Dist: regex==2026.1.15
-Requires-Dist: setuptools==80.9.0
-Requires-Dist: six==1.17.0
-Requires-Dist: tzdata==2025.3
-Requires-Dist: tzlocal==5.3.1
-Requires-Dist: wheel==0.45.1
-Provides-Extra: dev
-Requires-Dist: dateparser==1.2.2; extra == "dev"
-Requires-Dist: Faker==40.1.2; extra == "dev"
-Requires-Dist: iniconfig==2.3.0; extra == "dev"
-Requires-Dist: numpy==2.4.1; extra == "dev"
-Requires-Dist: packaging==25.0; extra == "dev"
-Requires-Dist: pandas==2.3.3; extra == "dev"
-Requires-Dist: pluggy==1.6.0; extra == "dev"
-Requires-Dist: Pygments==2.19.2; extra == "dev"
-Requires-Dist: pytest==9.0.2; extra == "dev"
-Requires-Dist: python-dateutil==2.9.0.post0; extra == "dev"
-Requires-Dist: pytz==2025.2; extra == "dev"
-Requires-Dist: regex==2026.1.15; extra == "dev"
-Requires-Dist: setuptools==80.9.0; extra == "dev"
-Requires-Dist: six==1.17.0; extra == "dev"
-Requires-Dist: tzdata==2025.3; extra == "dev"
-Requires-Dist: tzlocal==5.3.1; extra == "dev"
-Requires-Dist: wheel==0.45.1; extra == "dev"
+Requires-Python: >=3.14
+Requires-Dist: dateparser>=1.2
+Requires-Dist: faker>=40.0
+Requires-Dist: numpy>=2.4
+Requires-Dist: pandas>=2.3
+Requires-Dist: geonames-addr
+Requires-Dist: pycountry-convert>=0.7.2
