@@ -10,9 +10,40 @@ from datetime import datetime
 from pathlib import Path
 import difflib
 import pycountry_convert as pc
+import logging
+from logging.handlers import RotatingFileHandler
 from geonames_addr import GeoLocator
 
 #Functions
+
+def setup_logger(log_dir='./output/logs'):
+  """Configure logging to wrte to both console and a rotating log file."""
+  log_dir_path = Path(log_dir)
+  log_dir_path.mkdir(parents=True, exist_ok=True)
+
+  log_file = log_dir_path / 'data_generator.log'
+
+  #Define a shared format
+  formatter = logging.Formatter(
+    fmt='%(asctime)s | %(lefvelname)-8s | %(message)s', datefmt='%Y-%m-%d %H:%M:%S'
+  )
+
+  #File handler - rotates after 2MB, keeps 7 backups
+  file_handler = RotatingFileHandler(log_file, maxBytes=2_000_000, backupCount=7)
+  file_handler.setLevel(logging.DEBUG)
+  file_handler.setFormatter(formatter)
+
+  #Console handler - so you still see output in the terminal
+  console_handler = logging.StreamHandler()
+  console_handler.setLevel(logging.INFO)
+  console_handler.setFormatter(formatter)
+
+  logger = logging.getLogger('fakedata')
+  logger.addHandler(file_handler)
+  logger.addHandler(console_handler)
+
+  return logger 
+
 def locale_fnct(x):
   #Standardize input to use underscores, then split
   normalized = x.replace('-','_')
@@ -49,6 +80,9 @@ def get_continent(country_code):
 
 #******Define Argument Parser******
 if __name__ == "__main__":
+  logger = setup_logger()
+
+  """Initialize passed arguments"""
   parser = argparse.ArgumentParser(description="method to generate fake PII data")
   parser.add_argument("--locale", type=str, default = 'en-US', help="The first argument specifying a language and country to use for generating data. [default: en-US]")
   parser.add_argument("--record_number", type=int, default = 100, help="The second argument specifying the number of rows desired in output [default: 100]")
@@ -61,6 +95,7 @@ locale = args.locale  #'en-US' 'en-CA' 'en-GB' 'it_IT' 'nl_NL' 'fr_FR 'de_DE' 'e
 rec_num = args.record_number
 supported_locales = AVAILABLE_LOCALES
 
+logger.info(f"Starting fake data generation | locale={locale} | records{rec_num}")
 
 #split the input argument into two elements either using and underscore (_) or a dash (-) as the separator
 #locale_fnct = lambda x: x.split("_",2) if x.find("_") != -1 else (x.split("-",2) if x.find("-") != -1 else -1)
@@ -70,16 +105,17 @@ clean_locale = locale_array[0] + '_' + locale_array[1]
 country_cd = locale_array[1]
 
 #Validate locale argument no matter what the separator is
-if (clean_locale) in supported_locales:
-  fake = Faker(clean_locale)
-else:
+if (clean_locale) not in supported_locales:
   suggestions = difflib.get_close_matches(clean_locale, supported_locales, n=1)
-  if not suggestions:
-    raise ValueError(f"Currently, the process only accepts the following for the locales: {supported_locales}.  You provided {locale}")
-    sys.exit(1)
-  print(f"Did you mean '{suggestions[0]}")
+  msg = f"Invalid locale: '{locale}'"
+  if suggestions:
+    msg += f" - did you mean '{suggestions[0]}'?"
+  logger.error(msg)
   sys.exit(1)
 
+fake = Faker(clean_locale)
+
+logger.info(f"Locale validated: {clean_locale}")
 
 #Validate number of rows argument
 if isinstance(rec_num, int):
@@ -109,7 +145,7 @@ for i in range(num_rows):
     cnt+=1
 
   if cnt > 4:
-    print(f"Retries for clean data maxed out at {cnt} tries.")
+    logger.warning(f"Record {i+1}: Clean data retries maxed out after {cnt} attempts")
 
   #Define fake data
   street_address = fake.street_address()
@@ -146,6 +182,8 @@ for i in range(num_rows):
     }
   fake_data.append(new_row_data)
 
+logger.info(f"Generated {len(fake_data)} records successfully")
+
 dir_path = './output/data/'
 now = datetime.now()
 now_str = now.strftime('%Y_%m_%d %H:%M:%S')
@@ -158,4 +196,4 @@ full_path = rel_file_path.resolve()
 df = pd.DataFrame(fake_data)
 df.to_csv(file_path,index=False)
 
-print(f"Saved {file_name} to {dir_path}")
+logger.info(f"Output saved to {full_path}")
