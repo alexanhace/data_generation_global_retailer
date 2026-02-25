@@ -31,7 +31,10 @@ testpaths = ["tests"]
 
 [project.scripts]
 # TODO: add your CLI entry points here
+customer_fakedata = "data_generation.customer_fakedata:main"
 
+[toolsetuptools.packages.find]
+where = ["src"]
 
 
 
