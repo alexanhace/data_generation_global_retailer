@@ -7,3 +7,4 @@ archive/
 .vscode/
 data/
 output/
+src/*.egg-info
