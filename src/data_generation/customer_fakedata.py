@@ -12,6 +12,7 @@ from pathlib import Path
 import difflib
 import pycountry_convert as pc
 import logging
+import uuid
 from logging.handlers import RotatingFileHandler
 from geonames_addr import GeoLocator
 
@@ -97,6 +98,7 @@ def main():
   rec_num = args.record_number
   seed = args.seed
   supported_locales = AVAILABLE_LOCALES
+  NAMESPACE = uuid.UUID('ae5ce7ce-6dc1-46a1-b038-25ae61d31bec')
 
   # Seed all three random sources
   random.seed(seed)
@@ -154,6 +156,7 @@ def main():
       logger.warning(f"Record {i+1}: Clean data retries maxed out after {cnt} attempts")
 
     #Define fake data
+    customer_id = str(uuid.uuid5(NAMESPACE,str(i)))
     street_address = fake.street_address()
     city = loc['city']
     state = loc['state_province']
@@ -169,6 +172,7 @@ def main():
 
 
     new_row_data = {
+        'customer_id': customer_id,
         'name': person['name'],
         'street_address': street_address.replace('\n',' '),
         'city': city,
