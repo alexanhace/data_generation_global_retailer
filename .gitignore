@@ -5,6 +5,14 @@ archive/
 **/__pycache__/
 *.pyc
 .vscode/
-data/
-output/
 src/*.egg-info
+
+#Ignore contents but preserve folder structure
+data/*
+!data/.gitkeep
+output/customers/data/*
+!output/customers/data/.gitkeep
+output/retail/data/*
+!output/retail/data/.gitkeep
+output/logs/*
+!output/logs/.gitkeep

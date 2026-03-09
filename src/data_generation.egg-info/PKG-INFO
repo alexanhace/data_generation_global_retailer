@@ -9,3 +9,4 @@ Requires-Dist: numpy>=2.4
 Requires-Dist: pandas>=2.3
 Requires-Dist: geonames-addr
 Requires-Dist: pycountry-convert>=0.7.2
+Requires-Dist: babel>=2.18.0

@@ -1,2 +1,3 @@
 [console_scripts]
-customer_fakedata = data_generation.customer_fakedata:main
+customer_fakedata = data_generation.customers.customer_fakedata:main
+retail_products = data_generation.verticals.retail.retail_product_fakedata:main

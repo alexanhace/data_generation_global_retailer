@@ -4,3 +4,4 @@ numpy>=2.4
 pandas>=2.3
 geonames-addr
 pycountry-convert>=0.7.2
+babel>=2.18.0

@@ -2,7 +2,6 @@ README.md
 pyproject.toml
 src/data_generation/__init__.py
 src/data_generation/__main__.py
-src/data_generation/customer_fakedata.py
 src/data_generation/find_nans.py
 src/data_generation/rmv_chrs.py
 src/data_generation.egg-info/PKG-INFO
@@ -11,4 +10,16 @@ src/data_generation.egg-info/dependency_links.txt
 src/data_generation.egg-info/entry_points.txt
 src/data_generation.egg-info/requires.txt
 src/data_generation.egg-info/top_level.txt
+src/data_generation/customers/__init__.py
+src/data_generation/customers/customer_fakedata.py
+src/data_generation/customers/tests/test_customer_fakedata.py
+src/data_generation/shared/__init__.py
+src/data_generation/shared/currency.py
+src/data_generation/shared/ids.py
+src/data_generation/shared/logger.py
+src/data_generation/verticals/__init__.py
+src/data_generation/verticals/retail/__init__.py
+src/data_generation/verticals/retail/retail_orders_fakedata.py
+src/data_generation/verticals/retail/retail_product_fakedata.py
+src/data_generation/verticals/retail/tests/test_retail_product_fakedata.py
 tests/test_faker_data.py

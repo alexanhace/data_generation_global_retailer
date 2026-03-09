@@ -11,40 +11,12 @@ from datetime import datetime
 from pathlib import Path
 import difflib
 import pycountry_convert as pc
-import logging
+from data_generation.shared.logger import setup_logger
+from data_generation.shared.paths import PROJECT_ROOT
 import uuid
-from logging.handlers import RotatingFileHandler
 from geonames_addr import GeoLocator
 
 #Functions
-
-def setup_logger(log_dir='./output/logs'):
-  """Configure logging to wrte to both console and a rotating log file."""
-  log_dir_path = Path(log_dir)
-  log_dir_path.mkdir(parents=True, exist_ok=True)
-
-  log_file = log_dir_path / 'data_generator.log'
-
-  #Define a shared format
-  formatter = logging.Formatter(
-    fmt='%(asctime)s | %(lefvelname)-8s | %(message)s', datefmt='%Y-%m-%d %H:%M:%S'
-  )
-
-  #File handler - rotates after 2MB, keeps 7 backups
-  file_handler = RotatingFileHandler(log_file, maxBytes=2_000_000, backupCount=7)
-  file_handler.setLevel(logging.DEBUG)
-  file_handler.setFormatter(formatter)
-
-  #Console handler - so you still see output in the terminal
-  console_handler = logging.StreamHandler()
-  console_handler.setLevel(logging.INFO)
-  console_handler.setFormatter(formatter)
-
-  logger = logging.getLogger('customer_fakedata')
-  logger.addHandler(file_handler)
-  logger.addHandler(console_handler)
-
-  return logger 
 
 def locale_fnct(x):
   #Standardize input to use underscores, then split
@@ -105,7 +77,7 @@ def main():
   np.random.seed(seed)
   Faker.seed(seed)
 
-  logger.info(f"Starting fake data generation | locale={locale} | records{rec_num}")
+  logger.info(f"Starting fake data generation | locale={locale} | records={rec_num}")
 
   #split the input argument into two elements either using and underscore (_) or a dash (-) as the separator
   #locale_fnct = lambda x: x.split("_",2) if x.find("_") != -1 else (x.split("-",2) if x.find("-") != -1 else -1)
@@ -147,7 +119,7 @@ def main():
 
     #While there is NAN data in the result, get another result for 5 tries
     cnt = 0
-    while loc_df.isna().sum().sum() > 0 and cnt < 5:
+    while loc_df.isna().sum() > 0 and cnt < 5:
       loc = locator.get_random_location(country_cd)
       loc_df = pd.Series(loc)
       cnt+=1
@@ -194,13 +166,13 @@ def main():
 
   logger.info(f"Generated {len(fake_data)} records successfully")
 
-  dir_path = './output/data/'
+  dir_path = PROJECT_ROOT / 'output' / 'customers' / 'data'
+  dir_path.mkdir(parents=True, exist_ok=True)
   now = datetime.now()
   now_str = now.strftime('%Y_%m_%d_%H:%M:%S')
   file_name = f"fake_data_{country_cd}_{now_str}.csv"
-  file_path = dir_path + file_name
-  rel_file_path = Path(file_path)
-  full_path = rel_file_path.resolve()
+  file_path = dir_path / file_name
+  full_path = file_path.resolve()
   #print(f"Full path of file is {full_path}") - #Use for full path when needed
 
   df = pd.DataFrame(fake_data)

@@ -1,0 +1,193 @@
+# Global Retailer — Retail Product Catalog
+# Unit costs are in USD. Prices are calculated at generation time using margin_pct.
+# Local currency conversion is applied at generation time via shared/currency.py.
+
+[categories.electronics]
+category_id     = "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+display_name    = "Electronics"
+margin_pct      = 0.20
+
+    [categories.electronics.subcategories.laptops]
+    subcategory_id  = "b1c2d3e4-f5a6-7890-bcde-fa1234567891"
+    display_name    = "Laptops"
+    brands          = ["Apple", "Dell", "HP", "Lenovo", "Samsung"]
+    products        = ["ProBook 450", "XPS 13", "MacBook Air", "ThinkPad X1", "Galaxy Book"]
+    colors          = ["Black", "Silver", "Space Gray", "White"]
+    cost_range      = [400.00, 1800.00]
+
+    [categories.electronics.subcategories.smartphones]
+    subcategory_id  = "c1d2e3f4-a5b6-7890-cdef-ab1234567892"
+    display_name    = "Smartphones"
+    brands          = ["Apple", "Samsung", "Google", "Sony", "OnePlus"]
+    products        = ["iPhone 15", "Galaxy S24", "Pixel 8", "Xperia 5", "Nord 4"]
+    colors          = ["Black", "White", "Silver", "Gold", "Midnight Blue"]
+    cost_range      = [300.00, 1100.00]
+
+    [categories.electronics.subcategories.tablets]
+    subcategory_id  = "d1e2f3a4-b5c6-7890-defa-bc1234567893"
+    display_name    = "Tablets"
+    brands          = ["Apple", "Samsung", "Microsoft", "Lenovo", "Amazon"]
+    products        = ["iPad Pro", "Galaxy Tab S9", "Surface Pro", "Tab P12", "Fire HD"]
+    colors          = ["Black", "Silver", "Space Gray"]
+    cost_range      = [150.00, 900.00]
+
+    [categories.electronics.subcategories.headphones]
+    subcategory_id  = "e1f2a3b4-c5d6-7890-efab-cd1234567894"
+    display_name    = "Headphones"
+    brands          = ["Sony", "Bose", "Apple", "Sennheiser", "JBL"]
+    products        = ["WH-1000XM5", "QuietComfort 45", "AirPods Pro", "HD 450BT", "Live 660NC"]
+    colors          = ["Black", "White", "Silver", "Midnight Blue"]
+    cost_range      = [50.00, 350.00]
+
+[categories.clothing]
+category_id     = "f1a2b3c4-d5e6-7890-fabc-de1234567895"
+display_name    = "Clothing"
+margin_pct      = 0.55
+
+    [categories.clothing.subcategories.mens_tops]
+    subcategory_id  = "a2b3c4d5-e6f7-8901-abcd-ef2345678901"
+    display_name    = "Men's Tops"
+    brands          = ["Nike", "Adidas", "Ralph Lauren", "Tommy Hilfiger", "Levi's"]
+    products        = ["Classic Polo", "Essential Tee", "Oxford Shirt", "Henley Top", "Crew Sweatshirt"]
+    colors          = ["Black", "White", "Navy", "Grey", "Olive", "Burgundy"]
+    cost_range      = [8.00, 60.00]
+
+    [categories.clothing.subcategories.womens_tops]
+    subcategory_id  = "b2c3d4e5-f6a7-8901-bcde-fa2345678902"
+    display_name    = "Women's Tops"
+    brands          = ["Zara", "H&M", "Calvin Klein", "Tommy Hilfiger", "Gap"]
+    products        = ["Floral Blouse", "Wrap Top", "Fitted Tee", "Linen Shirt", "Ribbed Tank"]
+    colors          = ["Black", "White", "Beige", "Coral", "Pink", "Navy", "Burgundy"]
+    cost_range      = [8.00, 55.00]
+
+    [categories.clothing.subcategories.mens_bottoms]
+    subcategory_id  = "c2d3e4f5-a6b7-8901-cdef-ab2345678903"
+    display_name    = "Men's Bottoms"
+    brands          = ["Levi's", "Wrangler", "Nike", "Adidas", "Dockers"]
+    products        = ["Slim Fit Jeans", "Chino Pants", "Track Pants", "Cargo Shorts", "Dress Trousers"]
+    colors          = ["Black", "Navy", "Grey", "Beige", "Olive"]
+    cost_range      = [15.00, 80.00]
+
+    [categories.clothing.subcategories.womens_bottoms]
+    subcategory_id  = "d2e3f4a5-b6c7-8901-defa-bc2345678904"
+    display_name    = "Women's Bottoms"
+    brands          = ["Zara", "Levi's", "H&M", "Calvin Klein", "Gap"]
+    products        = ["High Waist Jeans", "Midi Skirt", "Wide Leg Trousers", "Yoga Pants", "Denim Shorts"]
+    colors          = ["Black", "White", "Navy", "Grey", "Beige", "Burgundy"]
+    cost_range      = [12.00, 75.00]
+
+[categories.beauty]
+category_id     = "e2f3a4b5-c6d7-8901-efab-cd2345678905"
+display_name    = "Beauty & Personal Care"
+margin_pct      = 0.65
+
+    [categories.beauty.subcategories.skincare]
+    subcategory_id  = "f2a3b4c5-d6e7-8901-fabc-de2345678906"
+    display_name    = "Skincare"
+    brands          = ["CeraVe", "Neutrogena", "La Roche-Posay", "Olay", "The Ordinary"]
+    products        = ["Hydrating Cleanser", "Daily Moisturiser", "SPF 50 Sunscreen", "Retinol Serum", "Eye Cream"]
+    colors          = ["Light", "Medium", "Dark"]
+    cost_range      = [5.00, 60.00]
+
+    [categories.beauty.subcategories.haircare]
+    subcategory_id  = "a3b4c5d6-e7f8-9012-abcd-ef3456789012"
+    display_name    = "Haircare"
+    brands          = ["Pantene", "L'Oreal", "Dove", "TRESemmé", "Moroccanoil"]
+    products        = ["Repair Shampoo", "Hydrating Conditioner", "Hair Mask", "Heat Protectant", "Curl Cream"]
+    colors          = ["N/A"]
+    cost_range      = [4.00, 45.00]
+
+    [categories.beauty.subcategories.fragrance]
+    subcategory_id  = "b3c4d5e6-f7a8-9012-bcde-fa3456789013"
+    display_name    = "Fragrance"
+    brands          = ["Chanel", "Dior", "Gucci", "Calvin Klein", "Hugo Boss"]
+    products        = ["Eau de Parfum 50ml", "Eau de Toilette 100ml", "Body Mist", "Aftershave", "Gift Set"]
+    colors          = ["N/A"]
+    cost_range      = [20.00, 180.00]
+
+[categories.sports]
+category_id     = "c3d4e5f6-a7b8-9012-cdef-ab3456789014"
+display_name    = "Sports & Outdoors"
+margin_pct      = 0.40
+
+    [categories.sports.subcategories.fitness_equipment]
+    subcategory_id  = "d3e4f5a6-b7c8-9012-defa-bc3456789015"
+    display_name    = "Fitness Equipment"
+    brands          = ["Bowflex", "NordicTrack", "Garmin", "Fitbit", "Theragun"]
+    products        = ["Adjustable Dumbbells", "Resistance Bands", "Yoga Mat", "Foam Roller", "Jump Rope"]
+    colors          = ["Black", "Grey", "Red", "Blue"]
+    cost_range      = [10.00, 500.00]
+
+    [categories.sports.subcategories.outdoor_gear]
+    subcategory_id  = "e3f4a5b6-c7d8-9012-efab-cd3456789016"
+    display_name    = "Outdoor Gear"
+    brands          = ["The North Face", "Columbia", "Patagonia", "Black Diamond", "MSR"]
+    products        = ["Hiking Backpack", "Sleeping Bag", "Camping Tent", "Trekking Poles", "Headlamp"]
+    colors          = ["Black", "Green", "Blue", "Orange", "Grey"]
+    cost_range      = [20.00, 400.00]
+
+    [categories.sports.subcategories.sports_footwear]
+    subcategory_id  = "f3a4b5c6-d7e8-9012-fabc-de3456789017"
+    display_name    = "Sports Footwear"
+    brands          = ["Nike", "Adidas", "New Balance", "ASICS", "Under Armour"]
+    products        = ["Running Shoes", "Cross Trainers", "Trail Runners", "Basketball Shoes", "Tennis Shoes"]
+    colors          = ["Black", "White", "Red", "Blue", "Grey", "Green"]
+    cost_range      = [40.00, 180.00]
+
+[categories.home_garden]
+category_id     = "a4b5c6d7-e8f9-0123-abcd-ef4567890123"
+display_name    = "Home & Garden"
+margin_pct      = 0.45
+
+    [categories.home_garden.subcategories.kitchen]
+    subcategory_id  = "b4c5d6e7-f8a9-0123-bcde-fa4567890124"
+    display_name    = "Kitchen"
+    brands          = ["KitchenAid", "Cuisinart", "Ninja", "Instant Pot", "Breville"]
+    products        = ["Stand Mixer", "Air Fryer", "Coffee Maker", "Blender", "Toaster Oven"]
+    colors          = ["Black", "White", "Silver", "Chrome", "Red"]
+    cost_range      = [25.00, 400.00]
+
+    [categories.home_garden.subcategories.bedding]
+    subcategory_id  = "c4d5e6f7-a8b9-0123-cdef-ab4567890125"
+    display_name    = "Bedding"
+    brands          = ["Parachute", "Brooklinen", "Purple", "Casper", "Tempur-Pedic"]
+    products        = ["Cotton Duvet Cover", "Fitted Sheet Set", "Pillow Pack", "Weighted Blanket", "Mattress Topper"]
+    colors          = ["White", "Grey", "Beige", "Navy", "Natural"]
+    cost_range      = [20.00, 300.00]
+
+    [categories.home_garden.subcategories.garden_tools]
+    subcategory_id  = "d4e5f6a7-b8c9-0123-defa-bc4567890126"
+    display_name    = "Garden Tools"
+    brands          = ["Fiskars", "DeWalt", "Black+Decker", "Husqvarna", "Gardena"]
+    products        = ["Pruning Shears", "Garden Hose", "Leaf Blower", "Lawn Mower", "Soil Trowel"]
+    colors          = ["Black", "Green", "Orange", "Red"]
+    cost_range      = [8.00, 350.00]
+
+[categories.toys]
+category_id     = "e4f5a6b7-c8d9-0123-efab-cd4567890127"
+display_name    = "Toys & Games"
+margin_pct      = 0.50
+
+    [categories.toys.subcategories.board_games]
+    subcategory_id  = "f4a5b6c7-d8e9-0123-fabc-de4567890128"
+    display_name    = "Board Games"
+    brands          = ["Hasbro", "Mattel", "Ravensburger", "Days of Wonder", "Asmodee"]
+    products        = ["Strategy Game", "Family Quiz Game", "Cooperative Adventure", "Classic Chess Set", "Puzzle 1000pc"]
+    colors          = ["Multicolor"]
+    cost_range      = [8.00, 60.00]
+
+    [categories.toys.subcategories.outdoor_toys]
+    subcategory_id  = "a5b6c7d8-e9f0-1234-abcd-ef5678901234"
+    display_name    = "Outdoor Toys"
+    brands          = ["Little Tikes", "Step2", "Nerf", "Razor", "Radio Flyer"]
+    products        = ["Trampoline", "Swing Set", "Water Blaster", "Kick Scooter", "Balance Bike"]
+    colors          = ["Red", "Blue", "Yellow", "Green", "Multicolor"]
+    cost_range      = [15.00, 400.00]
+
+    [categories.toys.subcategories.educational]
+    subcategory_id  = "b5c6d7e8-f9a0-1234-bcde-fa5678901235"
+    display_name    = "Educational Toys"
+    brands          = ["LEGO", "Melissa & Doug", "VTech", "Osmo", "Thames & Kosmos"]
+    products        = ["Building Blocks Set", "Science Kit", "Art Supply Set", "Coding Robot", "Wooden Puzzle"]
+    colors          = ["Multicolor", "Red", "Blue", "Yellow"]
+    cost_range      = [10.00, 120.00]
